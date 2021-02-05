@@ -11,7 +11,7 @@ with open("splunk_SPL_output.txt", "w") as text_file: # Create an output text fi
     print('index=myIndex sourcetype="somesourcetype"', file=text_file) # This is the start of the Splunk query that specifies the index (ie. data source details)
     ### This while loop creates the idividual search strings per IP/cidr as required by Splunk for this sort of bulk query search inline --- this can be done with an input lookup, provided that exists and is in a usable + accessable format, the reason for doing it inline is for expediency around testing and R+D while exploring data during new investigation types
     i = 0 
-    while i < (len(data) - 1):
+    while i <= (len(data) - 1):
         print('c_ip="' + str(data[i]).replace("['", "").replace("']", "") + '" OR', file=text_file) # This loops through the IP list imported and places it within the required Splunk query format --- and removes the extra characters that come from the python outputs that would otherwise interfere with the search query function in Splunk
         i = i + 1
     print('c_ip="' + str(data[i]).replace("['", "").replace("']", "") + '"', file=text_file) # This ends the query and omits the final "OR" for accurate Splunk SPL to be able to run immediately
