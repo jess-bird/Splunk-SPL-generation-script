@@ -1,4 +1,4 @@
-# solid-chainsaw
+# Splunk SPL generation script
 
 ## Automating generic Splunk query generation in python
 
